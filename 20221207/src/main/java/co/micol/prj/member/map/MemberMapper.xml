@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.micol.prj.member.map.MemberMapper">
+	<select id="memberSelectList" resultType="co.micol.prj.member.service.MemberVO">
+	 	SELECT * FROM MEMBER
+	</select>
+	
+	
+	<select id="memberSelect" resultType="co.micol.prj.member.service.MemberVO">
+		SELECT * FROM MEMBER 
+		WHERE MEMBER_ID = #{memberId} 
+	</select>
+	
+	<insert id="memberInsert" parameterType="co.micol.prj.member.service.MemberVO">
+		INSERT INTO MEMBER
+		VALUES(#{memberId},#{memberName},#{memberPassword},
+				#{memberAge},#{memberAddress},#{memberTel},#{memberAuthor})
+	</insert>
+	
+	<delete id="memberDelete" parameterType="co.micol.prj.member.service.MemberVO">
+		DELETE FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</delete>
+	
+	<update id="memberUpdate">
+		UPDATE MEMBER
+		SET MEMBER_PASSWORD = #{memberPassword}, MEMBER_ADDRESS = #{memberAddress}, 
+			MEMBER_TEL = #{memberTel}, MEMBER_AUTHOR = #{memberAuthor}
+		WHERE MEMBER_ID = #{memberId}
+	</update>
+	
+	<select id="isIdCheck" resultType="boolean">
+		<!-- SQL 로그인 할때 아이디가 존재하는지 체크하는 구문 아이디가 있으면 1 아니면 0 if문으로 로그인 만들수 있음 -->
+		SELECT CASE WHEN COUNT(MEMBER_ID) = 1 THEN 0 ELSE 1 END AS ID 
+		FROM MEMBER WHERE MEMBER_ID = #{id}
+		
+	</select>
+</mapper>
