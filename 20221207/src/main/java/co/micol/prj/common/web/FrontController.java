@@ -13,8 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import co.micol.prj.MainCommand;
 import co.micol.prj.common.Command;
 import co.micol.prj.member.command.AjaxMemberIdCheck;
+import co.micol.prj.member.command.MemberDelete;
+import co.micol.prj.member.command.MemberEdit;
+import co.micol.prj.member.command.MemberEditForm;
 import co.micol.prj.member.command.MemberJoinForm;
 import co.micol.prj.member.command.MemberList;
+import co.micol.prj.member.command.MemberLogin;
+import co.micol.prj.member.command.MemberLoginForm;
+import co.micol.prj.member.command.MemberLogout;
+import co.micol.prj.member.command.MemberUpdate;
+import co.micol.prj.member.command.memberSelect;
 import co.micol.prj.member.command.MemberJoin;
 
 /**
@@ -39,6 +47,14 @@ public class FrontController extends HttpServlet {
 		map.put("/memberJoinForm.do", new MemberJoinForm());
 		map.put("/AjaxMemberIdCheck.do", new AjaxMemberIdCheck()); 
 		map.put("/memberJoin.do", new MemberJoin());
+		map.put("/memberLoginForm.do", new MemberLoginForm());
+		map.put("/memberLogin.do", new MemberLogin());
+		map.put("/memberLogout.do", new MemberLogout());
+		map.put("/memberSelect.do", new memberSelect());
+		map.put("/memberEdit.do", new MemberEdit()); //멤버 수정
+		map.put("/memberDelete.do", new MemberDelete());
+		map.put("/memberEditForm.do", new MemberEditForm());
+		map.put("/memberUpdate.do", new MemberUpdate());
 	}
 
 	

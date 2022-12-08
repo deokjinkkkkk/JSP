@@ -26,7 +26,9 @@
 			</thead>
 			<tbody>
 				<c:forEach items ="${members }" var ="m">
-					<tr>
+					<tr onmouseover="this.style.background='#fcecae';"
+						onmouseleave="this.style.background ='#FFFFFF';"
+						onclick="memberSelect('${m.memberId}')">
 						<td width="150" align="center">${m.memberId }</td>
 						<td width="150" align="center">${m.memberName }</td>
 						<td width="150" align="center">${m.memberAge }</td>
@@ -38,6 +40,17 @@
 			</tbody>
 		</table>
 	</div><br>
+	<div>
+		<form id="frm" action="memberSelect.do" method="post">
+			<input type="hidden" id="memberId" name="memberId">
+		</form>
+	</div>
 </div>
+<script type="text/javascript">
+	function memberSelect(id) {
+		document.getElementById("memberId").value=id;
+		frm.submit();	//숨겨진 폼을 전송한다.
+	}
+</script>
 </body>
 </html>

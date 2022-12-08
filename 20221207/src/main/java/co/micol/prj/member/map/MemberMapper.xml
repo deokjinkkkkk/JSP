@@ -7,8 +7,10 @@
 	
 	
 	<select id="memberSelect" resultType="co.micol.prj.member.service.MemberVO">
+	<!-- 비밀번호 까지 같이 넘어오면 비밀번호 확인 (동적 씨퀄) -->
 		SELECT * FROM MEMBER 
 		WHERE MEMBER_ID = #{memberId} 
+		<if test="memberPassword != null">AND MEMBER_PASSWORD = #{memberPassword}</if>
 	</select>
 	
 	<insert id="memberInsert" parameterType="co.micol.prj.member.service.MemberVO">
@@ -24,9 +26,16 @@
 	
 	<update id="memberUpdate">
 		UPDATE MEMBER
-		SET MEMBER_PASSWORD = #{memberPassword}, MEMBER_ADDRESS = #{memberAddress}, 
-			MEMBER_TEL = #{memberTel}, MEMBER_AUTHOR = #{memberAuthor}
+		<set>
+			<if test="memberName != null">MEMBER_NAME = #{memberName}</if>,
+			<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword}</if>,
+			<if test="memberAge != null">MEMBER_AGE = #{memberAge}</if>,
+			<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress}</if>, 
+			<if test="memberTel != null">MEMBER_TEL = #{memberTel}</if>, 
+			<if test="memberAuthor != null">MEMBER_AUTHOR = #{memberAuthor}</if>
+		</set>
 		WHERE MEMBER_ID = #{memberId}
+		
 	</update>
 	
 	<select id="isIdCheck" resultType="boolean">

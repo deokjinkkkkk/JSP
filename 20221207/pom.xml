@@ -17,6 +17,13 @@
   </properties>
 
   <dependencies>
+	  <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+	<dependency>
+	    <groupId>commons-codec</groupId>
+	    <artifactId>commons-codec</artifactId>
+	    <version>1.15</version>
+	</dependency>
+  
 	  <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
 	  <!-- 오라클 jdbc 를 사용할때는 ojdbc를 사용한다. -->
 	<dependency>

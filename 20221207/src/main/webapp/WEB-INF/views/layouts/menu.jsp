@@ -12,12 +12,21 @@
 	<nav id="topMenu">
 		<ul>
 			<li><a class="menuLink" href="main.do">Home</a></li>	
-			<li><a class="menuLink" href="#">Notice</a></li>		
-			<li><a class="menuLink" href="memberJoinForm.do">Join</a></li>
+			<li><a class="menuLink" href="#">Notice</a></li>	
 			<li><a class="menuLink" href="#">Content</a></li>
+			<c:if test="${author eq 'ADMIN' }">
 			<li><a class="menuLink" href="memberList.do">Member</a></li>
-			<li><a class="menuLink" href="#">Login</a></li>
-			<li><a class="menuLink" href="#">Logout</a></li>
+			</c:if>
+			<c:if test="${empty id }">		
+			<li><a class="menuLink" href="memberJoinForm.do">Join</a></li>
+			</c:if>
+			<c:if test="${empty id }">
+				<li><a class="menuLink" href="memberLoginForm.do">Login</a></li>
+			</c:if>
+			<c:if test="${not empty id }">
+				<li><a class="menuLink" href="memberLogout.do">Logout</a></li>				
+			</c:if>
+			
 		</ul>
 	</nav>
 </body>
