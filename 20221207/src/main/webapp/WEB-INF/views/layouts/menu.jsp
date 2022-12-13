@@ -12,7 +12,7 @@
 	<nav id="topMenu">
 		<ul>
 			<li><a class="menuLink" href="main.do">Home</a></li>	
-			<li><a class="menuLink" href="#">Notice</a></li>	
+			<li><a class="menuLink" href="noticeList.do">Notice</a></li>	
 			<li><a class="menuLink" href="#">Content</a></li>
 			<c:if test="${author eq 'ADMIN' }">
 			<li><a class="menuLink" href="memberList.do">Member</a></li>

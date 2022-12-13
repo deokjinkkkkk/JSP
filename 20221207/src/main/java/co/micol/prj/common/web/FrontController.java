@@ -23,6 +23,10 @@ import co.micol.prj.member.command.MemberLoginForm;
 import co.micol.prj.member.command.MemberLogout;
 import co.micol.prj.member.command.MemberUpdate;
 import co.micol.prj.member.command.memberSelect;
+import co.micol.prj.notice.command.NoticeInsert;
+import co.micol.prj.notice.command.NoticeInsertForm;
+import co.micol.prj.notice.command.NoticeList;
+import co.micol.prj.notice.command.NoticeSelect;
 import co.micol.prj.member.command.MemberJoin;
 
 /**
@@ -52,9 +56,13 @@ public class FrontController extends HttpServlet {
 		map.put("/memberLogout.do", new MemberLogout());
 		map.put("/memberSelect.do", new memberSelect());
 		map.put("/memberEdit.do", new MemberEdit()); //멤버 수정
-		map.put("/memberDelete.do", new MemberDelete());
-		map.put("/memberEditForm.do", new MemberEditForm());
-		map.put("/memberUpdate.do", new MemberUpdate());
+		map.put("/memberDelete.do", new MemberDelete()); //멤버 삭제
+		map.put("/memberEditForm.do", new MemberEditForm()); //멤버 수정폼 호출
+		map.put("/memberUpdate.do", new MemberUpdate()); //멤버 수정
+		map.put("/noticeInsertForm.do", new NoticeInsertForm()); //공지사항 등록 폼
+		map.put("/noticeList.do", new NoticeList()); //공지사항 목록
+		map.put("/noticeSelect.do", new NoticeSelect()); //공지사항 상세보기
+		map.put("/noticeInsert.do", new NoticeInsert()); //공지사항 등록
 	}
 
 	

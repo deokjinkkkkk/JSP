@@ -10,7 +10,7 @@ import lombok.Setter;
 public class NoticeVO {
 	private int noticeId;
 	private String noticeWriter;
-	private Date noticeDater;
+	private Date noticeDate;
 	private String noticeTitle;
 	private String noticeSubject;
 	private int noticeHit;
