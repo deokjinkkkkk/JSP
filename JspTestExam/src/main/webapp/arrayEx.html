@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>arrayEx.html</title>
+    <style>
+        #data {
+            display: none;
+        }
+
+        #target {
+            width: 500px;
+            background-color: aquamarine;
+        }
+
+        #target span {
+            display: inline-block;
+            width: 100px;
+            margin: 5px;
+            border: 1px solid black;
+            text-align: center;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="data">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis pariatur asperiores sit quasi corporis doloremque molestiae eius, distinctio odit officia molestias ut ea, impedit, dolore itaque maiores fuga dignissimos natus?</div>
+    <input type="text" id="read">
+    <button id="write">찾기</button>
+
+    <div id="target"> 
+        <!-- //style="display:none" -->
+        <!-- split한 값을 여기로 (아래처럼) -->
+        
+
+    </div>
+
+    <script>
+        
+        let data = document.getElementById('data').innerText;
+        let spData = data.split(' ')
+        spData.forEach(item => {
+            let span = document.createElement('span')
+            target.append(span)
+            span.append(item)
+        })
+        document.getElementById('write').addEventListener('click',function(){
+            let text = document.getElementById('read').value
+            document.querySelectorAll('#target span').forEach(span =>{
+                if(span.innerText == text)
+                span.remove();
+            })
+            document.getElementById('read').value = '';
+            document.getElementById()
+        })
+       
+        
+    </script>
+</body>
+
+</html>

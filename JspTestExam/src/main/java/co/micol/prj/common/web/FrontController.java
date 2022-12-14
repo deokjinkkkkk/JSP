@@ -25,6 +25,7 @@ import co.micol.prj.member.command.MemberUpdate;
 import co.micol.prj.member.command.memberSelect;
 import co.micol.prj.notice.command.NoticeAddAjax;
 import co.micol.prj.notice.command.NoticeAjax;
+import co.micol.prj.notice.command.NoticeDelAjax;
 import co.micol.prj.notice.command.NoticeDelete;
 import co.micol.prj.notice.command.NoticeEdit;
 import co.micol.prj.notice.command.NoticeInsert;
@@ -33,6 +34,7 @@ import co.micol.prj.notice.command.NoticeList;
 import co.micol.prj.notice.command.NoticeListAjax;
 import co.micol.prj.notice.command.NoticeSelect;
 import co.micol.prj.notice.command.NoticeUpdate;
+import co.micol.prj.notice.command.NoticeUpdateAjax;
 
 /**
  * Servlet implementation class FrontController
@@ -75,6 +77,8 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeAjax.do", new NoticeAjax());
 		map.put("/noticeListAjax.do", new NoticeListAjax());
 		map.put("/noticeAddAjax.do", new NoticeAddAjax());
+		map.put("/noticeDelAjax.do", new NoticeDelAjax());
+		map.put("/noticeUpdateAjax.do", new NoticeUpdateAjax());
 	}
 
 	

@@ -42,8 +42,6 @@ const table = {
         
         this.table.append(tbody);
     },
-    makeTr: function () {
-        
+    makeTr: function () {      
     }
-
 }

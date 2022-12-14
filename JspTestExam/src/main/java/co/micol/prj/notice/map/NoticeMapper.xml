@@ -3,6 +3,7 @@
 <mapper namespace="co.micol.prj.notice.map.NoticeMapper">
 	<select id="noticeSelectList" resultType="co.micol.prj.notice.service.NoticeVO">
 		SELECT * FROM NOTICE
+		ORDER BY NOTICE_ID
 	</select>
 	
 	<select id="noticeSelect" resultType="co.micol.prj.notice.service.NoticeVO"> 
@@ -20,19 +21,14 @@
 	</insert>
 
 	<update id="noticeUpdate" parameterType="co.micol.prj.notice.service.NoticeVO">
-	<selectKey keyProperty = "noticeId" resultType="int" order="BEFORE">
-			SELECT
-				 CASE WHEN MAX(NOTICE_ID) IS NULL THEN 1 ELSE MAX(NOTICE_ID) + 1 END AS NOTICEID
-			FROM NOTICE
-		</selectKey>
-		UPDATE NOTICE
+	UPDATE NOTICE 
 		<set>
-		<if test="noticeId != null">notice_id = #{noticeId}</if>,
-		<if test="memberPassword != null">MEMBER_PASSWORD = #{memberPassword}</if>,
-		<if test="memberAge != null">MEMBER_AGE = #{memberAge}</if>,
-		<if test="memberAddress != null">MEMBER_ADDRESS = #{memberAddress}</if>, 
-		<if test="memberTel != null">MEMBER_TEL = #{memberTel}</if>, 
-		<if test="memberAuthor != null">MEMBER_AUTHOR = #{memberAuthor}</if>
+			<if test="noticeWriter != null">NOTICE_WRITER = #{noticeWriter},</if>
+			<if test="noticeDate != null">NOTICE_DATE = #{noticeDate},</if>
+			<if test="noticeTitle != null">NOTICE_TITLE = #{noticeTitle},</if>
+			<if test="noticeSubject != null">NOTICE_SUBJECT = #{noticeSubject},</if>
+			<if test="noticeFile != null">NOTICE_FILE = #{noticeFile},</if>
+			<if test="noticeFileDir != null">NOTICE_FILE_DIR = #{noticeFileDir}</if>
 		</set>
 		WHERE NOTICE_ID = #{noticeId}
 	</update>
