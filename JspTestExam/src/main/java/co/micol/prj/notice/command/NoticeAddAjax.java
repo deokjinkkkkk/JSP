@@ -28,10 +28,11 @@ public class NoticeAddAjax implements Command {
 	
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		NoticeVO vo = new NoticeVO();
+		
 		if(isMultiRequest(request)) {
 			//multipart 요청이면
 			NoticeService dao = new NoticeServiceImpl();
-			NoticeVO vo = new NoticeVO();
 			
 			String saveDir = request.getServletContext().getRealPath("/attech/");
 			int maxSize = 1024*1024*1024; //최대 10M까지 업로드 
@@ -57,27 +58,20 @@ public class NoticeAddAjax implements Command {
 				
 				int n = dao.noticeInsert(vo);
 				
-				if(n != 0) {
-					//{"retCode":"Success"}
-					json = "{\"retCode\":\"Success\"}";
-				} else {
-					//{"retCode":"Fail"}
-					json = "{\"retCode\":\"Fail\"}";
-				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			return "Ajax:"+ json;
+			
 		}else {
 			//multipart요청이 아닌경우
-		NoticeVO vo = new NoticeVO();
-		vo.setNoticeWriter(request.getParameter("writer"));
-		vo.setNoticeTitle(request.getParameter("title"));
-		vo.setNoticeSubject(request.getParameter("subject"));
-		vo.setNoticeDate(Date.valueOf(request.getParameter("noticeDate")));
-		
-		NoticeService service = new NoticeServiceImpl();
-		service.noticeInsert(vo);
+			vo.setNoticeWriter(request.getParameter("writer"));
+			vo.setNoticeTitle(request.getParameter("title"));
+			vo.setNoticeSubject(request.getParameter("subject"));
+			vo.setNoticeDate(Date.valueOf(request.getParameter("noticeDate")));
+			
+			NoticeService service = new NoticeServiceImpl();
+			service.noticeInsert(vo);
+		}//e
 		
 		String json = null;
 		ObjectMapper mapper = new ObjectMapper();
@@ -90,6 +84,5 @@ public class NoticeAddAjax implements Command {
 		
 		//{"retCode" : "OK"}
 		return "Ajax:" + json;
-		}//e
 	}
 }
